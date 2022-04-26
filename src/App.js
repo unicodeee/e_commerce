@@ -46,7 +46,7 @@ const App = () => {
   const pathname = window.location.pathname;
   return (
     <div>
-      <NavBar totalItems={cart.total_items}></NavBar>
+      <NavBar totalItems={cart.total_items} products={products}></NavBar>
       <Routes>
         <Route
           path="cart"

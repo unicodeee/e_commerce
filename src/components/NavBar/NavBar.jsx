@@ -14,14 +14,17 @@ import {
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
+import SearchBox from "./SearchBox/SearchBox";
 
-const NavBar = ({ totalItems }) => {
+const NavBar = ({ totalItems, products }) => {
   const classes = useStyles();
   const location = useLocation();
+
+  console.log("totalItems", totalItems);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar classeName={classes.toolBar}>
           <IconButton // home button
             component={Link}
             to="/"
@@ -36,6 +39,12 @@ const NavBar = ({ totalItems }) => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Commerce.js
           </Typography>
+
+          <div className={classes.searchBox}>
+            {location.pathname == "/products" && (
+              <SearchBox products={products}></SearchBox>
+            )}
+          </div>
 
           <div className={classes.toolbarButtons}>
             {location.pathname == "/products" && (
