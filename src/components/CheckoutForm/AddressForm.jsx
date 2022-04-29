@@ -150,10 +150,10 @@ const AddressForm = ({ checkoutToken, next }) => {
 
           <br />
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <Button component={Link} to="/" variant="contained">
+            <Button component={Link} to="/" variant="outlined">
               Back to Cart
             </Button>
-            <Button variant="outlined" type="submit" color="primary">
+            <Button variant="contained" type="submit" color="primary">
               Next
             </Button>
           </div>

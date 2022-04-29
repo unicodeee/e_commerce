@@ -16,7 +16,7 @@ import { Link, useLocation } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchBox from "./SearchBox/SearchBox";
 
-const NavBar = ({ totalItems, products }) => {
+const NavBar = ({ totalItems, products, handleSearch }) => {
   const classes = useStyles();
   const location = useLocation();
 
@@ -24,7 +24,7 @@ const NavBar = ({ totalItems, products }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar classeName={classes.toolBar}>
+        <Toolbar className={classes.toolBar}>
           <IconButton // home button
             component={Link}
             to="/"
@@ -42,7 +42,10 @@ const NavBar = ({ totalItems, products }) => {
 
           <div className={classes.searchBox}>
             {location.pathname == "/products" && (
-              <SearchBox products={products}></SearchBox>
+              <SearchBox
+                products={products}
+                handleSearch={handleSearch}
+              ></SearchBox>
             )}
           </div>
 

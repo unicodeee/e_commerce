@@ -34,22 +34,23 @@ const Checkout = ({ cart }) => {
     };
     generateToken();
   }, [cart]);
+
+  useEffect(() => {}, [shippingData]);
   const Confirmation = () => <div>Confirmation</div>;
 
   const next = (data) => {
-    setShippingData(data);
-    console.log("🚀 ~ file: Checkout.jsx ~ line 41 ~ next ~ data", data);
+    setShippingData({ ...data });
+    console.log("ShippingData: ", shippingData);
+    nextStep();
   };
-  console.log(
-    "🚀 ~ file: Checkout.jsx ~ line 44 ~ next ~ shippingData",
-    shippingData
-  );
+  const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
 
   const Form = () =>
     activeStep === 0 ? (
       <AddressForm checkoutToken={checkoutToken} next={next} />
     ) : (
-      <PaymentForm />
+      <PaymentForm checkoutToken={checkoutToken} backStep={backStep} />
     );
   return (
     <>

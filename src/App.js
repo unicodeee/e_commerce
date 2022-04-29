@@ -44,9 +44,17 @@ const App = () => {
   }, []);
   let navigate = useNavigate();
   const pathname = window.location.pathname;
+
+  const handleSearch = (newValue) => {
+    console.log("Search Value: ", newValue);
+  };
   return (
     <div>
-      <NavBar totalItems={cart.total_items} products={products}></NavBar>
+      <NavBar
+        totalItems={cart.total_items}
+        products={products}
+        handleSearch={handleSearch}
+      ></NavBar>
       <Routes>
         <Route
           path="cart"
